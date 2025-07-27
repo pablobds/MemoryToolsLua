@@ -26,21 +26,6 @@ function MemoryTools.new(pkg, typeSearch)
   self.searchType = MemoryTools.TYPE_SEARCH[typeSearch:upper()] or MemoryTools.SEARCH_TYPES.UNKNOWN -- tipo de pesquisa
   self.pid = MemoryTools.getPid(pkg)
   self.root = MemoryTools.isRoot()
-
-  
-  if MemoryTools.isPath("/sdcard/Cheat") then
-    print("Pasta Cheat encontrado!")
-   else
-    print("false")
-  end
-
-  if MemoryTools.isPath("/sdcard/Cheat/" .. self.package) then
-    print("Pasta " .. self.package .. " encontrado!")
-   else
-    os.execute("mkdir -p " .. "/sdcard/Cheat/" .. self.package .. "/")
-    print("Pasta " .. self.package .. " criado com sucesso!")
-  end
-
   return self
 end
 
@@ -80,7 +65,7 @@ function MemoryTools.getPid(package)
 end
 
 function MemoryTools:writeMemory(address)
-  local tempFile = "/sdcard/Notes/Address" .. address.address .. self.package
+  local tempFile = "/sdcard/Notes/" .. address.address .. self.package
   local f = io.open(tempFile, "wb") -- abrir arquivo temporario que será injetado os valores na memória
 
   if not f then return false end -- caso não conseguir abrir ele retorna false
@@ -150,20 +135,5 @@ function MemoryTools.isPath(path)
   end
   return false
 end
-
-function MemoryTools:genBin(address)
-  local tempFile = "/sdcard/Cheat/" .. self.package .. "/0x" .. string.upper(address.address) .. ".nuke"
-
-  local f = io.open(tempFile, "wb") -- abrir arquivo temporario que será injetado os valores na memória
-
-  if not f then return false end -- caso não conseguir abrir ele retorna false
-
-  value = address.value
-  value = address:valueConvert(value)
-
-  f:write(value)
-  f:close()
-end
-
 
 return MemoryTools
