@@ -51,3 +51,38 @@ MemoryTools.isRoot() -> boolean
 MemoryTools.getPid(package: string) -> integer | nil
 ```
 
+### Metodos de estância 
+Escreve diretamente na memória do processo
+```lua
+self:writeMemory(address: table)
+```
+
+# MemoryAddress
+Define objetos de endereço de memória, contendo o valor, tipo e conversão para formato binário.
+Usado junto com o módulo MemoryTools
+
+```lua
+local MemoryAdress = require("MemoryAdress")
+```
+
+### Construtor 
+Cria um novo objeto representando um endereço de memória.
+
+- address(string)
+- type(string)
+- value(int ou string)
+```lua
+MemoryAdress.new(address, type, value)
+```
+
+# Exemplo de uso
+```
+local MemoryTools = require("MemoryTools")
+local MemoryAdress = require("MemoryAdress")
+
+local tool = MemoryTools.new("com.meuapp.alvo", "JAVA_HEAP")
+
+local addr = MemoryAdress.new("CAFEBABE", "Dword", "1337")
+
+tool:writeMemory(addr)
+```
