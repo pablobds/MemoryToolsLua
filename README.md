@@ -76,7 +76,7 @@ MemoryAdress.new(address, type, value)
 ```
 
 # Exemplo de uso
-```
+```lua
 local MemoryTools = require("MemoryTools")
 local MemoryAdress = require("MemoryAdress")
 
