@@ -1,8 +1,22 @@
 ## MemoryTools
-esta em desenvolvimento ainda, por enquanto ele consegue 
-escrever nos endereço específico
+O módulo MemoryTools permite interações avançadas com memória de processos Android, incluindo escrita direta em memória
 
-esse modulo foi feito com base no andlua por isso os "imports"
+esse modulo foi feito com base no app andlua por isso os "imports"
+# Exemplo de uso
+
+
+```lua
+local MemoryTools = require("MemoryTools")
+local MemoryAdress = require("MemoryAdress")
+
+local tool = MemoryTools.new("com.meuapp.alvo", "JAVA_HEAP")
+
+local addr = MemoryAdress.new("CAFEBABE", "Dword", "1337")
+
+tool:writeMemory(addr)
+```
+
+
 
 # Docs
 
@@ -75,14 +89,4 @@ Cria um novo objeto representando um endereço de memória.
 MemoryAdress.new(address, type, value)
 ```
 
-# Exemplo de uso
-```lua
-local MemoryTools = require("MemoryTools")
-local MemoryAdress = require("MemoryAdress")
 
-local tool = MemoryTools.new("com.meuapp.alvo", "JAVA_HEAP")
-
-local addr = MemoryAdress.new("CAFEBABE", "Dword", "1337")
-
-tool:writeMemory(addr)
-```
