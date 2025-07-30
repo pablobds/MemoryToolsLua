@@ -1,7 +1,7 @@
 ## MemoryTools
 O módulo MemoryTools permite interações avançadas com memória de processos Android, incluindo escrita direta em memória
 
-> ⚠️ Este módulo foi criado com base no ambiente do app **AndLua**, por isso utiliza alguns `imports` e construções compatíveis com ele (como `luajava`, acesso root, etc.).
+> ⚠️ Este módulo foi criado com base no ambiente do app **AndLua**, por isso utiliza alguns `import` e construções compatíveis com ele (como `luajava`, acesso root, etc.).
 ---
 
 # Exemplo de uso
